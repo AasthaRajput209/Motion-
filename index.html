@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MOTION — The Garment Awakens</title>
+    <meta name="description" content="Explore MOTION — an immersive digital flagship experience celebrating the art, story, and craftsmanship behind contemporary luxury fashion.">
+    <link rel="stylesheet" href="style.css?v=2.0">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300&family=Plus+Jakarta+Sans:wght@300;400;500&family=Reenie+Beanie&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Loading Screen -->
+    <div id="loader" class="loader-container">
+        <div class="loader-content">
+            <h1 class="loader-brand">M O T I O N</h1>
+            <div class="loader-bar-wrap">
+                <div class="loader-bar"></div>
+            </div>
+            <p class="loader-status">Preparing the exhibition...</p>
+        </div>
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="main-header">
+        <div class="header-logo">M O T I O N</div>
+        <nav class="header-nav">
+            <a href="#philosophy" class="nav-link">Philosophy</a>
+            <a href="#gallery" class="nav-link">The Collection</a>
+            <a href="#details" class="nav-link">Behind the Design</a>
+        </nav>
+        <div class="header-lang">EN</div>
+    </header>
+
+    <!-- WebGL Canvas Container -->
+    <div id="canvas-container"></div>
+
+    <!-- Spatial Background Typography (rendered behind WebGL garment canvas) -->
+    <div class="spatial-bg-text" id="spatial-bg">
+        <div class="bg-word w-1">SILHOUETTE</div>
+        <div class="bg-word w-2">TEXTURE</div>
+        <div class="bg-word w-3">GEOMETRY</div>
+    </div>
+
+    <!-- Film Grain and Noise Overlays -->
+    <div class="grain-overlay"></div>
+    <div class="shadow-overlay"></div>
+
+    <!-- Scroll Narrative Container -->
+    <div id="scroll-container">
+
+        <!-- Scene 1: Opening (Hero) -->
+        <section id="hero" class="scroll-section hero-section">
+            <!-- Luxury Editorial Overlays -->
+            <div class="hero-sidebar left">EXH_01_SRCS // MOTION_BRAND_STUDIO // GRMNT_01</div>
+            <div class="hero-sidebar right">COORD_50.8503° N, 4.3517° E</div>
+            
+            <div class="hero-env-specs">
+                <div class="spec-item"><span class="spec-label">ENV</span><span class="spec-val">WEIGHTLESS</span></div>
+                <div class="spec-item"><span class="spec-label">VEL</span><span class="spec-val">0.05m/s</span></div>
+                <div class="spec-item"><span class="spec-label">FLOW</span><span class="spec-val">CONTINUOUS</span></div>
+            </div>
+
+            <div class="section-content">
+                <p class="hero-sub">Collection 01 &nbsp;·&nbsp; The Art of Wear</p>
+                <h2 class="hero-statement opacity-0">Every thread carries a story.</h2>
+                <button class="hero-cta-btn" onclick="document.getElementById('details').scrollIntoView({ behavior: 'smooth' })">Explore Collection</button>
+                <div class="scroll-indicator">
+                    <span class="scroll-arrow"></span>
+                    <span class="scroll-text">Scroll to observe</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Scene 2: Detailed Story (Labels appear at specific scroll points) -->
+        <section id="details" class="scroll-section details-section">
+            <div class="sticky-viewport">
+                <!-- Glowing HTML radar dots (pulse markers) -->
+                <div class="radar-dot dot-1" id="radar-1"><div class="radar-ring"></div></div>
+                <div class="radar-dot dot-2" id="radar-2"><div class="radar-ring"></div></div>
+                <div class="radar-dot dot-3" id="radar-3"><div class="radar-ring"></div></div>
+
+                <!-- Details Hotspot 1 -->
+                <div class="detail-hotspot hotspot-left" id="hotspot-1">
+                    <div class="line-connector"></div>
+                    <div class="hotspot-content">
+                        <img src="assets/micro_fabric.jpg" class="hotspot-thumb" alt="Fabric Close-up">
+                        <div class="hotspot-txt-wrap">
+                            <span class="hotspot-num">01 / Material</span>
+                            <h3 class="hotspot-title">420 GSM French Terry</h3>
+                            <p class="hotspot-desc">Knitted from 100% premium organic cotton. A high-density loopback weave engineered to retain its structure, resist stretching, and provide exceptional warmth.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Details Hotspot 2 -->
+                <div class="detail-hotspot hotspot-right" id="hotspot-2">
+                    <div class="line-connector"></div>
+                    <div class="hotspot-content">
+                        <img src="assets/micro_stitching.jpg" class="hotspot-thumb" alt="Stitching Close-up">
+                        <div class="hotspot-txt-wrap">
+                            <span class="hotspot-num">02 / Design</span>
+                            <h3 class="hotspot-title">Oversized Silhouette</h3>
+                            <p class="hotspot-desc">Curved underarm paneling and drop-shoulder construction create a modern, structured drape that moves in harmony with the body without restriction.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Details Hotspot 3 -->
+                <div class="detail-hotspot hotspot-center" id="hotspot-3">
+                    <div class="line-connector"></div>
+                    <div class="hotspot-content">
+                        <img src="assets/micro_silhouette.jpg" class="hotspot-thumb" alt="Cut Close-up">
+                        <div class="hotspot-txt-wrap">
+                            <span class="hotspot-num">03 / Detail</span>
+                            <h3 class="hotspot-title">Double-Lined Hood</h3>
+                            <p class="hotspot-desc">A deep, dual-layer architectural hood constructed with hidden internal seams, designed to hold its sculptural shape around the collar when worn.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Scene 3: Inside the Mind of the Designer -->
+        <section id="behind" class="scroll-section behind-section">
+            <div class="sticky-viewport">
+                <!-- Drafting Blueprint guides -->
+                <div class="drafting-guides">
+                    <div class="guide-crosshair cx-1"></div>
+                    <div class="guide-crosshair cx-2"></div>
+                    <div class="guide-line-h"></div>
+                    <div class="guide-line-v"></div>
+                </div>
+
+                <div class="behind-grid">
+                    
+                    <!-- Card 1: Sketch -->
+                    <div class="behind-card card-sketch float-element" data-speed="-0.06">
+                        <div class="card-inner">
+                            <div class="card-meta"><span>DRWG // 09-A-ASYM</span><span>SCALE // 1:5</span></div>
+                            <img src="assets/design_sketch.jpg" alt="Design Sketch" class="behind-img">
+                            <span class="card-label">Hoodie Technical Sketch</span>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: Note / Inspiration -->
+                    <div class="behind-card card-note float-element" data-speed="0.04">
+                        <div class="note-paper">
+                            <div class="note-grid-lines"></div>
+                            <p class="handwritten">"We wanted a hoodie that feels armored yet fluid. Heavyweight double-knit cotton that holds its structure in motion. Cybernetic utility without unnecessary hardware."</p>
+                            <span class="note-signature">— Studio Notes</span>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: Moodboard (Architecture) -->
+                    <div class="behind-card card-mood float-element" data-speed="-0.08">
+                        <div class="card-inner">
+                            <div class="card-meta"><span>PHOT // CONCR-SHDW</span><span>EXP // 02</span></div>
+                            <img src="assets/mood_photo.jpg" alt="Architectural Mood" class="behind-img">
+                            <span class="card-label">Geometry and Shadows</span>
+                        </div>
+                    </div>
+
+                    <!-- Card 4: Swatch -->
+                    <div class="behind-card card-swatch float-element" data-speed="0.06">
+                        <div class="card-inner">
+                            <div class="card-meta"><span>MTRL // HVY-TERRY</span><span>GSM // 420</span></div>
+                            <img src="assets/material_swatch.jpg" alt="Material Swatch" class="behind-img">
+                            <span class="card-label">Obsidian Black Terry</span>
+                        </div>
+                    </div>
+
+                    <!-- Card 5: Music Waveform -->
+                    <div class="behind-card card-waveform float-element" data-speed="0.08">
+                        <div class="waveform-box">
+                            <span class="wave-label">BEAT PATTERN // OSC_01</span>
+                            <div class="wave-bars">
+                                <span style="height: 15px"></span>
+                                <span style="height: 35px"></span>
+                                <span style="height: 20px"></span>
+                                <span style="height: 45px"></span>
+                                <span style="height: 60px"></span>
+                                <span style="height: 25px"></span>
+                                <span style="height: 10px"></span>
+                                <span style="height: 30px"></span>
+                                <span style="height: 50px"></span>
+                                <span style="height: 12px"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 6: Animated Map Tracker -->
+                    <div class="behind-card map-container float-element" data-speed="0.05">
+                        <div class="map-box">
+                            <div class="map-header"><span>ATELIER TRACKER // REG_01</span></div>
+                            <svg class="map-svg" viewBox="0 0 100 60">
+                                <!-- Curved route line -->
+                                <path class="map-route" d="M10,50 Q40,10 80,30" fill="none" stroke="rgba(242, 242, 237, 0.15)" stroke-width="1" />
+                                <path class="map-route-active" d="M10,50 Q40,10 80,30" fill="none" stroke="var(--accent)" stroke-width="1.5" />
+                                <!-- Start dot -->
+                                <circle cx="10" cy="50" r="2" fill="var(--text-secondary)" />
+                                <!-- End dot -->
+                                <circle cx="80" cy="30" r="3.5" fill="var(--accent)" class="pulse-marker" />
+                            </svg>
+                            <span class="map-coord">Paris Workshop // 48.8566° N, 2.3522° E</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Scene 4: The Collection (Drifting Digital Gallery) -->
+        <section id="gallery" class="scroll-section gallery-section">
+            <div class="gallery-title-wrap">
+                <span class="gallery-num">Exhibition / 01</span>
+                <h2 class="gallery-title">The Dialogue of Form</h2>
+                <p class="gallery-subtitle">Click on a garment or product card to draw it close and inspect in 3D.</p>
+            </div>
+            
+            <!-- Product Cards Grid -->
+            <div class="products-grid">
+                <!-- Product Card 1 -->
+                <div class="product-card" data-id="0">
+                    <div class="product-card-inner">
+                        <span class="p-card-num">01</span>
+                        <h3 class="p-card-title">The Balenciaga Hoodie</h3>
+                        <p class="p-card-meta">Oversized Drape // 420 GSM</p>
+                        <span class="p-card-price">$260</span>
+                        <button class="p-card-btn">Inspect 3D</button>
+                    </div>
+                </div>
+                <!-- Product Card 2 -->
+                <div class="product-card" data-id="1">
+                    <div class="product-card-inner">
+                        <span class="p-card-num">02</span>
+                        <h3 class="p-card-title">The Panel Sports Hoodie</h3>
+                        <p class="p-card-meta">Paneled Sports // Double Breasted</p>
+                        <span class="p-card-price">$180</span>
+                        <button class="p-card-btn">Inspect 3D</button>
+                    </div>
+                </div>
+                <!-- Product Card 3 -->
+                <div class="product-card" data-id="2">
+                    <div class="product-card-inner">
+                        <span class="p-card-num">03</span>
+                        <h3 class="p-card-title">The Flame Print Hoodie</h3>
+                        <p class="p-card-meta">Flame Screenprint // 468 GSM</p>
+                        <span class="p-card-price">$220</span>
+                        <button class="p-card-btn">Inspect 3D</button>
+                    </div>
+                </div>
+                <!-- Product Card 4 -->
+                <div class="product-card" data-id="3">
+                    <div class="product-card-inner">
+                        <span class="p-card-num">04</span>
+                        <h3 class="p-card-title">The Muscle Hoodie</h3>
+                        <p class="p-card-meta">Sleeveless Giza // Drop Armhole</p>
+                        <span class="p-card-price">$150</span>
+                        <button class="p-card-btn">Inspect 3D</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Information overlay for active piece in gallery -->
+            <div class="gallery-overlay-card" id="gallery-card">
+                <button class="gallery-close">&times;</button>
+                <div class="gallery-card-content">
+                    <span id="g-item-num" class="g-num">01</span>
+                    <h3 id="g-item-title" class="g-title">The Draped Tunic</h3>
+                    <p id="g-item-desc" class="g-desc">An off-white tunic crafted from raw-spun organic Belgian linen. Its asymmetrical hem moves organically, creating shadows and depth as the body moves.</p>
+                    
+                    <div class="g-shop-options">
+                        <span class="g-option-label">Select Size</span>
+                        <div class="size-selector">
+                            <button class="size-btn">S</button>
+                            <button class="size-btn active">M</button>
+                            <button class="size-btn">L</button>
+                            <button class="size-btn">XL</button>
+                        </div>
+                    </div>
+
+                    <button class="g-add-cart-btn">Add to Atelier Cart</button>
+
+                    <div class="g-meta-row">
+                        <div class="g-meta">
+                            <span>Material</span>
+                            <strong id="g-item-material">100% Linen</strong>
+                        </div>
+                        <div class="g-meta">
+                            <span>Origin</span>
+                            <strong id="g-item-origin">Studio Crafted</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Scene 5: Brand Philosophy -->
+        <section id="philosophy" class="scroll-section philosophy-section">
+            <div class="philosophy-content">
+                <div class="word-trigger" id="ph-1">Thoughtful Design</div>
+                <div class="word-trigger" id="ph-2">Slow Fashion</div>
+                <div class="word-trigger" id="ph-3">Individuality</div>
+                <div class="word-trigger" id="ph-4">Sustainability</div>
+                <div class="word-trigger" id="ph-5">Craftsmanship</div>
+            </div>
+        </section>
+
+        <!-- Scene 6: Final (Commerce & Call to Action) -->
+        <section id="final" class="scroll-section final-section">
+            <div class="final-content center-content">
+                <h2 class="final-title">Collection 01</h2>
+                <p class="final-desc">A dialogue between material, light, and geometry. Handcrafted to order in limited releases.</p>
+                <div class="cta-group">
+                    <a href="#" class="cta-button primary-cta">Request Private Viewing</a>
+                    <a href="#" class="cta-button secondary-cta">Explore Shop Archive</a>
+                </div>
+                <footer class="final-footer">
+                    <span>© 2026 MOTION. All rights reserved.</span>
+                    <span>Designed for slow interaction.</span>
+                </footer>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Background Grid lines for architectural museum feel -->
+    <div class="museum-grid">
+        <div class="grid-line"></div>
+        <div class="grid-line"></div>
+        <div class="grid-line"></div>
+        <div class="grid-line"></div>
+    </div>
+
+    <!-- Scripts -->
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- GLTF Loader -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+    <!-- GSAP & ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <!-- Custom JS -->
+    <script src="main.js?v=2.0"></script>
+</body>
+</html>
